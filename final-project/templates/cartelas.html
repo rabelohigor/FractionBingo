@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}Cartelas de Bingo{% endblock %}
+
+{% block heading %}Cartelas de Bingo{% endblock %}
+
+{% block content %}
+    <div class="cartelas-container">
+        <h2>{{ cartelas|length }} Cartelas Geradas:</h2>
+
+        <!-- Adicione o formulário e o botão de geração de PDF abaixo do conteúdo das cartelas -->
+        <br>
+        <form id="gerarPdfForm" method="POST" action="/gerar_pdf">
+            <input type="hidden" name="cartelas" id="cartelasInput">
+            <button type="submit">Gerar PDF para impressão</button>
+        </form>
+
+        <br>
+        <div id="cartelasDisplay">
+            <table>
+                {% for cartela in cartelas %}
+                <tr>
+                    <td class="cartela">
+                        <table>
+                            {% for linha in cartela %}
+                            <tr>
+                                {% for numero in linha %}
+                                <td>{{ numero }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Converta a lista de cartelas para JSON e coloque-a no input oculto
+        var cartelas = {{ cartelas|tojson|safe }};
+        document.getElementById("cartelasInput").value = JSON.stringify(cartelas);
+    </script>
+
+    <script>
+        document.getElementById("gerarPdfForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            this.submit();
+        });
+    </script>
+</div>
+{% endblock %}

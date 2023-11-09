@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Geração de Cartelas
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST" action="/geracao">
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label for="nomeJogo" class="text-highlight">Nome do Jogo:</label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control mb-2" id="nomeJogo" name="nomeJogo" required placeholder="Digite o nome do jogo">
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label for="tipoCartelas" class="text-highlight">Selecione o tipo de cartela:</label>
+            </div>
+            <div class="col">
+                <select class="form-control mb-2" id="tipoCartelas" name="tipoCartelas">
+                    <option value="" disabled selected>Escolha o tipo de cartela</option>
+                    <option value="fracionarios">Cartelas com números fracionários</option>
+                    <option value="decimais">Cartelas com números decimais</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label for="numCartelas" class="text-highlight">Número de Cartelas:</label>
+            </div>
+            <div class="col">
+                <input type="number" class="form-control mb-2" id="numCartelas" name="numCartelas" value="1" min="1">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Gerar Cartelas!</button>
+    </form>
+</div>
+{% endblock %}

@@ -8,8 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<body class="{% block extra_classes %}{% endblock %}">
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Bingo Racional</a>
         <div class="navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
@@ -22,12 +23,32 @@
                     <a class="nav-link" href="/sorteio">Sortear Números</a>
                 </li>
             </ul>
+            <ul class="navbar-nav">
+                {% if user_logged_in %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Sair</a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
     <div class="container mt-4">
+        <div class="container mt-4">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show mx-auto text-center" role="alert" style="color: white; background-color: red;">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
         <div class="row">
             <div class="col-lg-6 mx-auto text-center">
-                <h1 class="mb-4">{% block heading %}{% endblock %}</h1>
+                <h1 class="mb-4 text-highlight">{% block heading %}{% endblock %}</h1>
                 {% block content %}
                 {% endblock %}
             </div>

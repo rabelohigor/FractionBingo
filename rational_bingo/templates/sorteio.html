@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block title %}Sorteio de Números - Bingo Racional{% endblock %}
+{% block heading %}Bingo Racional{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='globo_bingo.png') }}" alt="Imagem de Globo de Bingo" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center">
+            <h1 style="white-space: nowrap; margin-right: 80px;">Sorteio de Números</h1>
+            <form method="POST" id="sorteioForm">
+                <div class="form-group">
+                    <label for="jogoSelecionado">Escolha o Jogo:</label>
+                    <select class="form-control" id="jogoSelecionado" name="jogoSelecionado">
+                        <option value="" selected>Escolha um jogo</option>
+                        {% for jogo in jogos %}
+                            <option value="{{ jogo.id }}">{{ jogo.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">Começar</button>
+            </form>
+            <div class="text-center mt-4">
+                <button id="sortear" class="btn btn-primary" style="display: none;">SORTEAR</button>
+                <button id="finalizar" class="btn btn-danger" style="display: none;">BINGO!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <div id="numeros-sorteio" style="display: none;">
+                <strong>Números sorteados:</strong>
+                <span id="numeros-sorteado">
+                    <!-- Números sorteados serão exibidos aqui como itens de lista -->
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function () {
+    var sorteioIniciado = false;
+    var numerosSorteados = [];
+
+    // Função para adicionar o número sorteado na tela
+    function adicionarNumeroSorteado(numero) {
+        var elementoNumero = $('<span class="numero-sorteado">').text(numero + ' ');
+        $("#numeros-sorteado").append(elementoNumero);
+    }
+
+
+    $("#sorteioForm").submit(function (event) {
+        event.preventDefault(); // Para impedir o envio do formulário e recarregar a página
+        var jogoId = $("#jogoSelecionado").val();
+        if (jogoId) {
+            sorteioIniciado = true;
+            // Desabilitar a seleção do jogo e o botão de começar
+            $("#jogoSelecionado").prop("disabled", true);
+            $(this).find(":submit").hide();
+            $("#sortear").show();
+            $("#finalizar").show();
+            $("#numeros-sorteio").show(); // Mostrar a lista de números sorteados
+        } else {
+            alert("Por favor, selecione um jogo antes de começar.");
+        }
+    });
+
+    $("#sortear").click(function() {
+        $.ajax({
+            url: '/sorteio',
+            type: 'POST',
+            data: {jogoSelecionado: $("#jogoSelecionado").val()},
+            dataType: 'json',
+            success: function(response) {
+                if(response.numero_sorteado) {
+                    adicionarNumeroSorteado(response.numero_sorteado);
+                    numerosSorteados.push(response.numero_sorteado); // Adiciona à lista de números sorteados
+                }
+                else if(response.error) {
+                    alert(response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Um erro ocorreu: " + xhr.responseText);
+            }
+        });
+    });
+
+
+    $("#finalizar").click(function () {
+        if (sorteioIniciado) {
+            // Lógica para finalizar o jogo, se necessário
+            alert("O jogo foi finalizado.");
+            location.reload(); // Recarregar a página para resetar o estado
+        }
+    });
+});
+</script>
+{% endblock %}

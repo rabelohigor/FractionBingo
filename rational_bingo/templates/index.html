@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Bingo Racional - Página Inicial{% endblock %}
+
+{% block heading %}Bingo Racional{% endblock %}
+
+{% block content %}
+    <div class="container text-center">
+        <div class="row">
+            <p class="text-highlight">Bem-vindo ao Bingo Racional, um jogo divertido onde você pode gerar cartelas de bingo com números decimais ou fracionários e então realizar o sorteio.</p>
+        </div>
+        <!-- Insere a imagem de como jogar embaixo do texto de boas-vindas -->
+        <div class="row">
+            <img src="/static/como_jogar1.png" alt="Como Jogar" style="max-width:100%; height:auto;">
+        </div>
+        <br>
+        <div class="row">
+            <div class="text-highlight" style="text-align: left;">
+                <h2>Como jogar:</h2>
+                <ol>
+                    <li>Clique em <span class="underline">JOGAR</span> para ir à página de configuração das cartelas.</li>
+                    <li>Escolha um nome para o jogo, o tipo de cartela e quantas cartelas deseja gerar e então clique em <span class="underline">GERAR CARTELAS</span>. Após visualizar as mesmas, clique em <span class="underline">GERAR PDF</span> para impressão e as prepare.</li>
+                    <li>Quando terminar, você pode retornar ao site e clicar no menu <span class="underline">Sortear Números</span> para iniciar o sorteio.</li>
+                    <li>Escolha qual jogo deseja sortear (o jogo deve ser o mesmo que usou para gerar as cartelas, garantindo que os números sejam compatíveis).</li>
+                    <li>Agora é só realizar o sorteio, clicando em <span class="underline">SORTEAR</span>.</li>
+                    <li>Quando tiver um ganhador, clique em <span class="underline">BINGO!</span> para finalizar!</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <br>
+    <form action="/jogar" method="get">
+        <button type="submit" class="btn btn-success btn-lg btn-block">JOGAR</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,83 @@
+#cartelasContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.right {
+    margin-left: auto;
+}
+
+.cartela {
+    border: 1px solid #000; /* Adiciona uma borda à cartela */
+    margin: 10px; /* Adiciona espaço entre as cartelas */
+    padding: 10px; /* Adiciona preenchimento interno para o conteúdo da cartela */
+}
+
+.cartela table {
+    width: 100%; /* Garante que a tabela da cartela ocupe toda a largura da célula */
+}
+
+.cartela td {
+    border: 1px solid #000; /* Adiciona borda a todas as células da tabela */
+    text-align: center; /* Alinha o conteúdo centralmente dentro das células */
+    padding: 5px; /* Adiciona preenchimento interno para o conteúdo das células */
+}
+
+#numeros-sorteio {
+    text-align: left;
+    margin-left: 20px; /* Ajuste a margem esquerda conforme necessário */
+}
+
+.numero-sorteado {
+    padding-right: 10px; /* ajuste conforme necessário */
+}
+
+.titulo-centralizado {
+    white-space: nowrap;
+    margin-right: 20px; /* Ajuste o valor da margem conforme necessário */
+}
+
+.background-inicial {
+    min-height: 100%;
+    position: relative; /* Necessário para posicionar corretamente o pseudo-elemento */
+    z-index: 0; /* Garante que o pseudo-elemento fique atrás do conteúdo */
+}
+
+.background-inicial::before {
+    content: ''; /* Necessário para que o pseudo-elemento seja criado */
+    position: absolute; /* Posiciona absolutamente dentro de .background-inicial */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('bingo_fundo.jpg'); /* Mesma imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.7; /* Ajuste a transparência conforme desejado, menor valor para mais transparência */
+    z-index: -1; /* Faz com que a imagem fique atrás do conteúdo */
+}
+
+.text-highlight {
+    background-color: rgba(255, 255, 255, 0.9); /* Branco semi-transparente */
+    padding: 0.5rem; /* Espaçamento interno para afastar o fundo do texto */
+    font-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+/* Personalização da cor do texto dos links da navbar */
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff; /* ou outra cor clara que você deseja */
+}
+
+/* Para itens ativos ou itens com hover */
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #cccccc; /* ou outra cor um pouco mais clara para o estado de hover */
+}

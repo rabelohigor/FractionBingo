@@ -81,3 +81,17 @@
 .navbar-dark .navbar-nav .nav-link.active {
     color: #cccccc; /* ou outra cor um pouco mais clara para o estado de hover */
 }
+
+.rodape {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
+  .rodape span {
+    margin-right: 40px;
+}

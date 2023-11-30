@@ -57,10 +57,38 @@
         </div>
     </div>
 
+    <!-- Rodapé fixo na parte inferior -->
+    <footer class="footer mt-5 bg-primary text-white rodape">
+        <div>
+            <span>Apoie o desenvolvimento de novos apps, DOE 😊</span>
+            <span>Pix | Celular: 27995902401</span>
+        </div>
+    </footer>
+
+    <!-- Espaço para evitar que o rodapé tampe o conteúdo -->
+    <div class="espaco-rodape"></div>
+
     {% block scripts %}
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                ajustarEspacoRodape();
+            });
+    
+            $(window).resize(function() {
+                ajustarEspacoRodape();
+            });
+    
+            function ajustarEspacoRodape() {
+                var alturaRodape = $('.rodape').outerHeight();
+                $('.espaco-rodape').css('height', alturaRodape + 'px');
+            }
+        </script>
+        
     {% endblock %}
+
 </body>
 </html>

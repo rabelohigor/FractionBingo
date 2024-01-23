@@ -1,11 +1,11 @@
-# RATIONAL BINGO GAME APP
+# FRACTION BINGO GAME APP
 #### Video Demo: <https://youtu.be/oa1_YA8M9VQ>
 
-## Final project: Rational Bingo
-Rational Bingo project is a simple web-based Bingo game application, where users can generate bingo cards and play bingo as numbers are drawn randomly, developed as part of the CS50 course offered by Harvard University. This README provides an overview of the project and an explanation of the design choices and code structure.
+## Final project: Fraction Bingo
+Fraction Bingo project is a simple web-based Bingo game application, where users can generate bingo cards and play bingo as numbers are drawn randomly, developed as part of the CS50 course offered by Harvard University. This README provides an overview of the project and an explanation of the design choices and code structure.
 
 ## About the project
-Rational aims to create bingo cards with rational or decimal numbers at random, offering an educational and playful tool that allows educators and teachers to teach rational number concepts in an engaging and fun way for students. Using the game as a base, students can learn while having fun and competing for prizes. This makes the learning process more enjoyable and interactive. The application is developed using the Flask framework in Python and incorporates web technologies such as HTML, CSS, JavaScript and Bootstrap.
+Fraction Bingo aims to create bingo cards with rational or decimal numbers at random, offering an educational and playful tool that allows educators and teachers to teach rational number concepts in an engaging and fun way for students. Using the game as a base, students can learn while having fun and competing for prizes. This makes the learning process more enjoyable and interactive. The application is developed using the Flask framework in Python and incorporates web technologies such as HTML, CSS, JavaScript and Bootstrap.
 
 ## Summary of features
 - Home page with an explanation of Bingo and how to use the site to play;
@@ -101,7 +101,7 @@ These functions are intended to support the main functionality of generating bin
 ### templates/
 The `layout.html` file establishes a basic structure that is utilized across all other pages. Jinja2 is employed for content blocks that can be overridden by child pages, such as `title`, `extra_classes`, `heading`, `content`, and `scripts`. Integration of Bootstrap for styling and jQuery for scripting functionalities enhances the user interface and interaction.
 
-The `index.html` page is configured with the title "Rational Bingo - Home Page" and provides instructions on how to play the game, ensuring clear and visual guidelines are in place for new users. It also features an image located at "/static/como_jogar1.png" to assist in this instructional process.
+The `index.html` page is configured with the title "Fraction Bingo - Home Page" and provides instructions on how to play the game, ensuring clear and visual guidelines are in place for new users. It also features an image located at "/static/como_jogar1.png" to assist in this instructional process.
 
 In `register.html`, a registration form is presented, allowing new users to create an account. The form is designed to give immediate feedback to the users after their registration attempts, highlighting either the success of account creation or errors that need to be addressed.
 
@@ -151,7 +151,7 @@ This styling ensures a consistent and user-friendly interface throughout the app
 
 
 ## Conclusion
-The "Rational Bingo" project is an innovative and educational web application, designed to enrich social gatherings and learning environments with a classic game of bingo, reinvented with a mathematical twist. This application uses rational and decimal numbers to generate bingo cards, offering a unique way to blend fun with education. This README provides a detailed overview of the project's core functionalities, as well as the design and technological choices — such as Flask and Bootstrap — that contribute to an interactive and enjoyable user experience. Whether to liven up a classroom or add a playful element to social events, "Rational Bingo" is a cutting-edge tool that promises both entertainment and learning. Get ready for some fun!
+The "Fraction Bingo" project is an innovative and educational web application, designed to enrich social gatherings and learning environments with a classic game of bingo, reinvented with a mathematical twist. This application uses rational and decimal numbers to generate bingo cards, offering a unique way to blend fun with education. This README provides a detailed overview of the project's core functionalities, as well as the design and technological choices — such as Flask and Bootstrap — that contribute to an interactive and enjoyable user experience. Whether to liven up a classroom or add a playful element to social events, "Rational Bingo" is a cutting-edge tool that promises both entertainment and learning. Get ready for some fun!
 
 ## License
 This project is open-sourced under the MIT license.
